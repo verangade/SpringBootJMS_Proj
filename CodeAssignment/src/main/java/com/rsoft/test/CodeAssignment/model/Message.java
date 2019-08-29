@@ -21,6 +21,11 @@ public class Message {
 		this. messageContent =  messageContent;
 	}
 	
+	public Message( String  messageContent) {
+		super();
+		this. messageContent =  messageContent;
+	}
+	
 	public Integer getId() {
 		return id;
 	}
