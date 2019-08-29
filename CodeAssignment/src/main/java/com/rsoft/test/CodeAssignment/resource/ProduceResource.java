@@ -5,6 +5,7 @@ import javax.jms.Queue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,9 +19,9 @@ public class ProduceResource {
 	@Autowired
 	private JmsTemplate jmsTemplate;
 	
-	@GetMapping("/message")
-	public String publishMessageToQUeue() {
-		jmsTemplate.convertAndSend(queue, "Hello World");
+	@GetMapping("/message/{content}")
+	public String publishMessageToQUeue(@PathVariable String content) {
+		jmsTemplate.convertAndSend(queue, content);
 		return "Message Published";
 	}
 
